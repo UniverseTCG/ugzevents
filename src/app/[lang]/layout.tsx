@@ -1,8 +1,14 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { getDictionary } from "../../dictionaries";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import "../globals.css";
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
 
 export async function generateMetadata(
   props: { params: Promise<{ lang: string }> }
