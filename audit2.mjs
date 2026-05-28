@@ -4,7 +4,7 @@ import puppeteer from 'puppeteer';
   const browser = await puppeteer.launch({ headless: 'new' });
   const page = await browser.newPage();
   await page.setViewport({ width: 375, height: 812, isMobile: true });
-  await page.goto('http://localhost:3001', { waitUntil: 'networkidle0' });
+  await page.goto('https://ugzevents.com/ca', { waitUntil: 'networkidle0' });
   
   const layoutAudit = await page.evaluate(() => {
     return {

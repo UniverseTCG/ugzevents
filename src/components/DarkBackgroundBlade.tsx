@@ -15,12 +15,12 @@ export default function DarkBackgroundBlade({
       textAlign: 'center',
       position: 'relative'
     }}>
-      <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', fontWeight: 800, textTransform: 'uppercase', marginBottom: '1.5rem', color: 'white' }}>
+      <div className="container animate-spring" style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', fontWeight: 900, textTransform: 'uppercase', marginBottom: 'var(--space-6)', color: 'white' }}>
           {title}
         </h2>
         <div 
-          style={{ fontSize: '1.1rem', marginBottom: '2.5rem', lineHeight: 1.6 }}
+          style={{ fontSize: '1.25rem', marginBottom: 'var(--space-8)', lineHeight: 1.6, color: 'rgba(255,255,255,0.9)' }}
           dangerouslySetInnerHTML={{ __html: copyHtml }}
         />
         <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>

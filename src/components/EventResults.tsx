@@ -32,14 +32,14 @@ export default function EventResults({
       <div className="container" style={{ maxWidth: '1000px', margin: '0 auto' }}>
         <h2 style={{ 
           fontSize: 'clamp(2rem, 5vw, 2.5rem)', 
-          fontWeight: 800, 
+          fontWeight: 900, 
           textTransform: 'uppercase', 
           textAlign: 'center', 
-          marginBottom: '2rem', 
-          color: '#0a215a',
-          letterSpacing: '0.05em' // Adjusted tracking like Image 3
+          marginBottom: 'var(--space-8)', 
+          color: 'var(--poke-navy)',
+          letterSpacing: '-0.02em'
         }}>
-          {title} {/* This will be "PRÓXIMOS EVENTOS" */}
+          {title}
         </h2>
 
         {/* Pillar Switcher exact match to Image 3 */}
@@ -51,16 +51,17 @@ export default function EventResults({
                 key={p.id}
                 onClick={() => setActivePillar(p.id)}
                 style={{
-                  background: isActive ? getPillarColor(p.color) : '#fff',
-                  color: isActive ? '#fff' : '#0a215a',
-                  border: `3px solid ${getPillarColor(p.color)}`,
-                  padding: 'clamp(0.5rem, 2vw, 0.5rem) clamp(1.5rem, 4vw, 3rem)', // Fluid padding
-                  fontSize: 'clamp(1rem, 3vw, 1.2rem)',
-                  fontWeight: 800,
-                  borderRadius: '999px', // Pill shape
+                  background: isActive ? getPillarColor(p.color) : 'transparent',
+                  color: isActive ? '#fff' : 'var(--poke-navy)',
+                  border: `1px solid ${isActive ? 'transparent' : 'rgba(0,0,0,0.1)'}`,
+                  padding: 'clamp(0.5rem, 2vw, 0.75rem) clamp(1.5rem, 4vw, 2.5rem)',
+                  fontSize: 'clamp(1rem, 3vw, 1.1rem)',
+                  fontWeight: 700,
+                  borderRadius: 'var(--radius-pill)',
                   cursor: 'pointer',
-                  transition: 'all 0.2s',
-                  boxShadow: 'none' // They don't have the brutalist shadow in the original pill
+                  transition: 'all 200ms var(--spring-easing)',
+                  boxShadow: isActive ? 'var(--shadow-hover)' : 'none',
+                  transform: isActive ? 'translateY(-1px)' : 'none'
                 }}
               >
                 {p.label}
@@ -70,22 +71,18 @@ export default function EventResults({
         </div>
 
         {/* Card exact match to Image 3 */}
-        <div style={{ 
-          background: '#fff', 
-          borderRadius: '16px', 
-          border: `4px solid ${getPillarColor(activeData.color)}`, 
-          padding: '2rem',
-          boxShadow: '0 10px 25px rgba(0,0,0,0.1)' // Soft shadow, not brutalist
+        <div className="card animate-spring" style={{ 
+          borderTop: `4px solid ${getPillarColor(activeData.color)}`, 
+          padding: 'var(--space-8)'
         }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-            <h3 style={{ fontSize: 'clamp(1.4rem, 4vw, 1.8rem)', fontWeight: 800, color: '#0a215a', marginBottom: '1.5rem', textTransform: 'uppercase' }}>
+            <h3 style={{ fontSize: 'clamp(1.4rem, 4vw, 1.8rem)', fontWeight: 800, color: 'var(--poke-navy)', marginBottom: 'var(--space-6)', textTransform: 'uppercase' }}>
               {activeData.title}
             </h3>
             
-            <a href={activeData.link} style={{ display: 'block', width: '100%', maxWidth: '800px', overflow: 'hidden', borderRadius: '12px', border: `3px solid ${getPillarColor(activeData.color)}` }}>
-              {/* If no actual image from Pokemon, we render a placeholder similar to their graphics */}
-              <div style={{ width: '100%', height: 'clamp(200px, 40vw, 400px)', backgroundImage: `url('${activeData.img}')`, backgroundSize: 'cover', backgroundPosition: 'center', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', paddingBottom: '2rem' }}>
-                <div style={{ background: 'white', color: '#0a215a', padding: 'clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 3rem)', borderRadius: '999px', fontWeight: 800, textTransform: 'uppercase', border: '3px solid #0a215a', fontSize: 'clamp(0.9rem, 2.5vw, 1.2rem)', transform: 'translateY(50%)', marginBottom: '-1rem' }}>
+            <a href={activeData.link} style={{ display: 'block', width: '100%', maxWidth: '800px', overflow: 'hidden', borderRadius: 'var(--radius-md)', border: `1px solid rgba(0,0,0,0.1)`, transition: 'all 250ms var(--spring-easing)' }} className="group">
+              <div style={{ width: '100%', height: 'clamp(200px, 40vw, 300px)', backgroundImage: `url('${activeData.img}')`, backgroundSize: 'cover', backgroundPosition: 'center', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', paddingBottom: 'var(--space-6)' }}>
+                <div className="btn-official" style={{ background: 'white', color: 'var(--poke-navy)', transform: 'translateY(50%)', marginBottom: '-1rem', border: '1px solid rgba(0,0,0,0.1)' }}>
                   COMPRAR ENTRADAS AHORA
                 </div>
               </div>

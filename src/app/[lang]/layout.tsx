@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { getDictionary } from "../../dictionaries";
+
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import "../globals.css";
@@ -54,7 +54,7 @@ export default async function RootLayout(
 ) {
   const params = await props.params;
   const lang = params.lang as 'ca' | 'es' | 'en';
-  const dict = await getDictionary(lang);
+
 
   return (
     <html lang={lang}>
@@ -76,7 +76,7 @@ export default async function RootLayout(
         />
       </head>
       <body>
-        <Header lang={lang} dict={dict} />
+        <Header lang={lang} />
         <main>{props.children}</main>
         <Footer lang={lang} />
       </body>

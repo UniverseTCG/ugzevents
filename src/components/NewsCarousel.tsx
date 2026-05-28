@@ -15,25 +15,25 @@ export default function NewsCarousel({ lang = 'es' }: { lang?: string }) {
       }}></div>
 
       <div className="container">
-        <h2 style={{
+          <h2 style={{
           textAlign: 'center',
-          fontSize: 'clamp(2rem, 6vw, 3rem)',
+          fontSize: 'clamp(2rem, 5vw, 3rem)',
           fontWeight: 900,
           color: 'white',
           textTransform: 'uppercase',
-          textShadow: '3px 3px 0px black, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
-          marginBottom: '3rem',
-          letterSpacing: '0.05em'
+          textShadow: '0 4px 12px rgba(0,0,0,0.1)',
+          marginBottom: 'var(--space-8)',
+          letterSpacing: '-0.02em'
         }}>
           Noticias del TCG Fest
         </h2>
 
-        <div style={{ display: 'flex', gap: '2rem', overflowX: 'auto', paddingBottom: '2rem' }}>
+        <div style={{ display: 'flex', gap: 'var(--space-6)', overflowX: 'auto', paddingBottom: 'var(--space-6)', scrollSnapType: 'x mandatory' }}>
           {news.map((item, idx) => (
-            <a href={item.link} key={idx} style={{ flex: '0 0 350px', borderRadius: '16px', overflow: 'hidden', border: '4px solid white', boxShadow: '0 10px 20px rgba(0,0,0,0.2)', backgroundColor: '#FFCB05', textDecoration: 'none' }}>
+            <a href={item.link} key={idx} className="card" style={{ flex: '0 0 min(85vw, 350px)', padding: 0, overflow: 'hidden', scrollSnapAlign: 'start', textDecoration: 'none', display: 'flex', flexDirection: 'column' }}>
               <div style={{ 
                 height: '180px', 
-                backgroundColor: item.bg === 'magenta' ? '#d9468f' : item.bg === 'green' ? '#4DAD5B' : '#3161A5',
+                backgroundColor: item.bg === 'magenta' ? '#d9468f' : item.bg === 'green' ? 'var(--poke-green)' : 'var(--poke-blue)',
                 backgroundImage: 'url("https://championships.pokemon.com/static-assets/images/backgrounds/checkerboard.png")',
                 backgroundSize: 'cover',
                 display: 'grid',
@@ -41,27 +41,17 @@ export default function NewsCarousel({ lang = 'es' }: { lang?: string }) {
               }}>
                 <img src="https://championships.pokemon.com/static-assets/images/small-promo/play-pokemon-logo.png" style={{ height: '60px' }} alt="Play" />
               </div>
-              <div style={{ padding: '2rem 1.5rem', textAlign: 'center', color: '#111827', height: '100%', minHeight: '250px', display: 'flex', flexDirection: 'column' }}>
-                <p style={{ fontWeight: 800, marginBottom: '1rem', fontSize: '1rem' }}>{item.date}</p>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: 'auto' }}>{item.title}</h3>
-                <p style={{ fontWeight: 600, fontSize: '0.85rem', marginTop: '1.5rem' }}>{item.type}</p>
+              <div style={{ padding: 'var(--space-6)', textAlign: 'center', height: '100%', minHeight: '220px', display: 'flex', flexDirection: 'column' }}>
+                <div className="pill" style={{ alignSelf: 'center', marginBottom: 'var(--space-3)' }}>{item.date}</div>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: 'auto', color: 'var(--poke-navy)', lineHeight: 1.3 }}>{item.title}</h3>
+                <p style={{ fontWeight: 600, fontSize: '0.9rem', marginTop: 'var(--space-4)', color: 'var(--text-secondary)' }}>{item.type}</p>
               </div>
             </a>
           ))}
         </div>
 
         <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-          <a href={`/${lang}/eventos/mollet-tcg-fest`} style={{ 
-            display: 'inline-block', 
-            backgroundColor: 'white', 
-            color: '#0a215a', 
-            padding: '1rem 3rem', 
-            borderRadius: '999px', 
-            fontWeight: 800, 
-            fontSize: '1.2rem',
-            textTransform: 'uppercase',
-            textDecoration: 'none'
-          }}>
+          <a href={`/${lang}/eventos/mollet-tcg-fest`} className="btn-official btn-white-outline" style={{ background: 'white', color: 'var(--poke-navy)' }}>
             Ir al Portal del Evento ‣
           </a>
         </div>

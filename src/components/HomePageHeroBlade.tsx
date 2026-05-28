@@ -27,22 +27,22 @@ export default function HomePageHeroBlade({
         left: 0,
         width: '100%', /* Modified from 50% for mobile */
         height: '100%',
-        background: 'linear-gradient(90deg, rgba(10,33,90,0.95) 0%, rgba(10,33,90,0.85) 60%, rgba(10,33,90,0) 100%)',
+        background: 'linear-gradient(90deg, rgba(10,33,90,0.98) 0%, rgba(10,33,90,0.85) 60%, rgba(10,33,90,0.2) 100%)',
         zIndex: 1
       }}></div>
 
       <div className="container" style={{ position: 'relative', zIndex: 2, display: 'flex', alignItems: 'center' }}>
-        <div style={{ maxWidth: '500px', color: 'white' }}>
+        <div className="animate-spring" style={{ maxWidth: '500px', color: 'white', textShadow: '0 4px 12px rgba(0,0,0,0.2)' }}>
           {/* Logo Placeholder (Original: regional-championships-logo-2x.webp) */}
           <img 
             src="https://championships.pokemon.com/static-assets/images/homepage-hero/regional-championships-logo-2x.webp" 
             alt="Logo" 
-            style={{ maxWidth: '300px', marginBottom: '2rem' }} 
+            style={{ maxWidth: '300px', marginBottom: 'var(--space-6)' }} 
           />
-          <h1 style={{ fontSize: 'clamp(2rem, 5vw, 2.5rem)', fontWeight: 800, textTransform: 'uppercase', marginBottom: '1rem', lineHeight: 1.1 }}>
+          <h1 style={{ color: 'white !important', fontSize: 'clamp(2.5rem, 6vw, 3.5rem)', marginBottom: 'var(--space-4)' }}>
             {title}
           </h1>
-          <p style={{ fontSize: 'clamp(1rem, 3vw, 1.25rem)', fontWeight: 600, marginBottom: '2rem' }}>
+          <p style={{ fontSize: 'clamp(1.1rem, 3vw, 1.25rem)', fontWeight: 600, opacity: 0.9, marginBottom: 'var(--space-8)' }}>
             {date}
           </p>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
