@@ -10,7 +10,7 @@ export default function NewsCarousel({ lang = 'es' }: { lang?: string }) {
       <div style={{
         position: 'absolute',
         top: 0, left: 0, right: 0, bottom: 0,
-        background: 'linear-gradient(135deg, rgba(231,134,141,1) 0%, rgba(209,150,192,1) 100%)',
+        background: 'var(--poke-navy)',
         zIndex: -1
       }}></div>
 
@@ -19,9 +19,8 @@ export default function NewsCarousel({ lang = 'es' }: { lang?: string }) {
           textAlign: 'center',
           fontSize: 'clamp(2rem, 5vw, 3rem)',
           fontWeight: 900,
-          color: 'white',
+          color: 'var(--championship-gold)',
           textTransform: 'uppercase',
-          textShadow: '0 4px 12px rgba(0,0,0,0.1)',
           marginBottom: 'var(--space-8)',
           letterSpacing: '-0.02em'
         }}>
@@ -30,7 +29,7 @@ export default function NewsCarousel({ lang = 'es' }: { lang?: string }) {
 
         <div style={{ display: 'flex', gap: 'var(--space-6)', overflowX: 'auto', paddingBottom: 'var(--space-6)', scrollSnapType: 'x mandatory' }}>
           {news.map((item, idx) => (
-            <a href={item.link} key={idx} className="card" style={{ flex: '0 0 min(85vw, 350px)', padding: 0, overflow: 'hidden', scrollSnapAlign: 'start', textDecoration: 'none', display: 'flex', flexDirection: 'column' }}>
+            <a href={item.link} key={idx} className="glass-card" style={{ flex: '0 0 min(85vw, 350px)', padding: 0, overflow: 'hidden', scrollSnapAlign: 'start', textDecoration: 'none', display: 'flex', flexDirection: 'column' }}>
               <div style={{ 
                 height: '180px', 
                 backgroundColor: item.bg === 'magenta' ? '#d9468f' : item.bg === 'green' ? 'var(--poke-green)' : 'var(--poke-blue)',
@@ -41,8 +40,8 @@ export default function NewsCarousel({ lang = 'es' }: { lang?: string }) {
               }}>
                 <img src="https://championships.pokemon.com/static-assets/images/small-promo/play-pokemon-logo.png" style={{ height: '60px' }} alt="Play" />
               </div>
-              <div style={{ padding: 'var(--space-6)', textAlign: 'center', height: '100%', minHeight: '220px', display: 'flex', flexDirection: 'column' }}>
-                <div className="pill" style={{ alignSelf: 'center', marginBottom: 'var(--space-3)' }}>{item.date}</div>
+              <div style={{ padding: 'var(--space-6)', textAlign: 'center', height: '100%', minHeight: '220px', display: 'flex', flexDirection: 'column', background: 'white' }}>
+                <div className="pill" style={{ alignSelf: 'center', marginBottom: 'var(--space-3)', background: 'var(--championship-bg)' }}>{item.date}</div>
                 <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: 'auto', color: 'var(--poke-navy)', lineHeight: 1.3 }}>{item.title}</h3>
                 <p style={{ fontWeight: 600, fontSize: '0.9rem', marginTop: 'var(--space-4)', color: 'var(--text-secondary)' }}>{item.type}</p>
               </div>
