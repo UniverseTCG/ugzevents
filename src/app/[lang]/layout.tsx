@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getDictionary } from "../../dictionaries";
 import Footer from "../../components/Footer";
+import Header from "../../components/Header";
 import "../globals.css";
 
 export async function generateMetadata(
@@ -69,25 +70,7 @@ export default async function RootLayout(
         />
       </head>
       <body>
-        <header>
-          <div className="logo" style={{ fontSize: '1.5rem', fontWeight: 800, fontFamily: 'var(--font-display)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ color: 'var(--primary)' }}>U</span>
-            <span style={{ color: 'var(--foreground)' }}>G</span>
-            <span style={{ color: 'var(--secondary)' }}>Z</span>
-          </div>
-          <nav style={{ display: 'flex', gap: '1.5rem', fontWeight: 500 }}>
-            <a href={`/${lang}/`}>{dict.nav.home}</a>
-            <a href={`/${lang}/eventos`}>{dict.nav.events}</a>
-            <a href={`/${lang}/clasificaciones`}>{dict.nav.leaderboards}</a>
-            <a href={`/${lang}/retransmisiones`}>{dict.nav.broadcasts}</a>
-            <a href={`/${lang}/eventos/mollet-tcg-fest`} style={{ color: 'var(--poke-yellow)' }}>MOLLET TCG FEST</a>
-          </nav>
-          <div className="lang-switcher" style={{ display: 'flex', gap: '0.5rem', fontWeight: 600 }}>
-            <a href="/ca" style={{ opacity: lang === 'ca' ? 1 : 0.5 }}>CA</a> | 
-            <a href="/es" style={{ opacity: lang === 'es' ? 1 : 0.5 }}>ES</a> | 
-            <a href="/en" style={{ opacity: lang === 'en' ? 1 : 0.5 }}>EN</a>
-          </div>
-        </header>
+        <Header lang={lang} dict={dict} />
         <main>{props.children}</main>
         <Footer lang={lang} />
       </body>
