@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "home": "Inici",
+    "events": "Esdeveniments",
+    "leaderboards": "Classificacions",
+    "broadcasts": "Retransmissions",
+    "news": "Notícies",
+    "faq": "FAQ & Contacte"
+  },
+  "home": {
+    "hero_title": "Universal Gaming Zone",
+    "hero_subtitle": "La lliga oficial d'esdeveniments TCG, VGC i més al territori català i més enllà.",
+    "cta": "Veure Esdeveniments",
+    "latest_events": "Últims Esdeveniments",
+    "banner_local": "Informa't sobre Play! Pokémon",
+    "btn_local": "Joc local ‣",
+    "btn_series": "Sèrie de Campionats ‣"
+  },
+  "events": {
+    "mollet_title": "Mollet TCG Fest",
+    "mollet_desc": "El primer gran esdeveniment a Mollet del Vallès: Competicions oficials, Cardshow i Trade Night."
+  },
+  "broadcasts": {
+    "title": "Retransmissions en Directe (Multi-POV)",
+    "live": "EN DIRECTE",
+    "offline": "DESCONNECTAT",
+    "z2_team": "Equip Z2",
+    "universe": "Universe TCG Hub"
+  }
+}

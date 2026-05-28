@@ -1,26 +1,195 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:ital,wght@0,700;0,800;0,900;1,800&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Play! Pokémon Official Aesthetic Variables */
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  
+  --poke-navy: #0A215A;
+  --poke-red: #E3350D;
+  --poke-blue: #3161A5;
+  --poke-yellow: #FFCB05;
+  --poke-yellow-hover: #e5b604;
+  --poke-green: #4DAD5B;
+  
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Montserrat', sans-serif;
+  
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-brutal: 4px 4px 0px 0px rgba(10,33,90,1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+  /* Textura de puntitos suaves */
+  background-image: radial-gradient(var(--poke-blue) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-color: #f1f5f9;
+  background-attachment: fixed;
+  background-blend-mode: multiply;
+}
+
+/* Header Navbar */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--poke-navy);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-md);
+  border-bottom: 4px solid var(--poke-red);
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+
+header a:hover {
+  color: var(--poke-yellow);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: var(--poke-navy);
+}
+
+a {
+  color: var(--poke-blue);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+/* Botones Brutalistas Oficiales */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  border-radius: var(--radius-sm);
+  font-weight: 800;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  border: 3px solid transparent;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-yellow {
+  background-color: var(--poke-yellow);
+  color: var(--poke-navy);
+  border-color: var(--poke-navy);
+  box-shadow: var(--shadow-brutal);
+}
+
+.btn-yellow:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px rgba(10,33,90,1);
+}
+
+.btn-red {
+  background-color: var(--poke-red);
+  color: white;
+  border-color: var(--poke-navy);
+  box-shadow: var(--shadow-brutal);
+}
+
+.btn-red:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px rgba(10,33,90,1);
+}
+
+.btn-blue {
+  background-color: var(--poke-blue);
+  color: white;
+  border-color: var(--poke-navy);
+  box-shadow: var(--shadow-brutal);
+}
+
+.btn-blue:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px rgba(10,33,90,1);
+}
+
+/* Tarjetas (Cards) Blancas y Limpias */
+.card {
+  background: var(--bg-secondary);
+  border: 3px solid var(--poke-navy);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  box-shadow: var(--shadow-brutal);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.bg-red { background-color: var(--poke-red); }
+.bg-blue { background-color: var(--poke-blue); }
+.bg-yellow { background-color: var(--poke-yellow); }
+.bg-navy { background-color: var(--poke-navy); }
+
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 768px) {
+  .grid-cols-2, .grid-cols-3, .grid-cols-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Diagonal Separators */
+.section-diagonal {
+  position: relative;
+  background: var(--bg-secondary);
+  padding: 6rem 0;
+  clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+  margin: -2rem 0;
+  z-index: 10;
 }
