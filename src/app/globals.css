@@ -198,7 +198,7 @@ a {
 .desktop-nav {
   display: flex;
   gap: 1.5rem;
-  fontWeight: 500;
+  font-weight: 500;
 }
 .mobile-menu-btn {
   display: none;
