@@ -4,6 +4,30 @@ import type { NextRequest } from 'next/server'
 const locales = ['ca', 'es', 'en']
 const defaultLocale = 'ca'
 
+function getPreferredLocale(request: NextRequest) {
+  const acceptLanguage = request.headers.get('accept-language')
+
+  if (!acceptLanguage) return defaultLocale
+
+  const languages = acceptLanguage
+    .split(',')
+    .map((entry) => {
+      const [language, quality = 'q=1'] = entry.trim().toLowerCase().split(';')
+      return {
+        language: language.split('-')[0],
+        quality: Number(quality.replace('q=', '')) || 0,
+      }
+    })
+    .sort((a, b) => b.quality - a.quality)
+
+  for (const { language } of languages) {
+    if (language === 'ca') return 'ca'
+    if (language === 'es') return 'es'
+  }
+
+  return 'en'
+}
+
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
   
@@ -21,7 +45,7 @@ export function proxy(request: NextRequest) {
 
   if (pathnameHasLocale) return
 
-  request.nextUrl.pathname = `/${defaultLocale}${pathname}`
+  request.nextUrl.pathname = `/${getPreferredLocale(request)}${pathname}`
   return NextResponse.redirect(request.nextUrl)
 }
 

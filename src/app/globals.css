@@ -65,6 +65,10 @@ body {
   overflow-x: hidden;
 }
 
+main { min-height: 70vh; }
+main h1, main h2, main h3 { text-wrap: balance; }
+main p, main li { text-wrap: pretty; }
+
 /* Animations */
 @keyframes spring-in {
   from { opacity: 0; transform: translateY(12px) scale(0.96); }
@@ -89,7 +93,8 @@ header {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   color: var(--poke-navy);
-  padding: 1rem 2rem;
+  min-height: 72px;
+  padding: 0.875rem clamp(1rem, 4vw, 2.5rem);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -211,6 +216,7 @@ a {
   padding: 2rem;
   transition: all 300ms var(--spring-easing);
   box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  line-height: 1.6;
 }
 
 .card:hover {
@@ -237,7 +243,8 @@ a {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--space-8) var(--space-4);
+  width: 100%;
+  padding: var(--space-8) clamp(1rem, 3vw, 2rem);
 }
 
 .grid { display: grid; gap: var(--space-8); }
@@ -260,6 +267,11 @@ a {
   border: none;
   cursor: pointer;
   z-index: 200;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  line-height: 1;
 }
 .mobile-nav-overlay {
   display: none;
@@ -358,4 +370,72 @@ a {
   font-family: var(--font-display);
   letter-spacing: 0.05em;
   font-size: 1.1rem;
+}
+
+.grid > .glass-card {
+  border-radius: var(--radius-lg);
+}
+
+.card > ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.card > h2,
+.card > h3 {
+  margin-bottom: 0.75rem;
+}
+
+.card > p + p {
+  margin-top: 0.75rem;
+}
+
+/* Shared page layout */
+.page-shell { padding: clamp(3rem, 7vw, 6rem) 0; background: var(--bg-primary); }
+.page-heading { max-width: 880px; margin: 0 auto clamp(2.5rem, 5vw, 4rem); text-align: center; }
+.page-heading h1 { margin-bottom: 1rem; font-size: clamp(2.25rem, 6vw, 4rem); text-transform: uppercase; }
+.page-heading p { max-width: 720px; margin: 0 auto; color: var(--text-secondary); font-size: clamp(1rem, 2vw, 1.2rem); line-height: 1.65; }
+
+.ticket-grid { align-items: stretch; max-width: 1050px; margin: 0 auto; }
+.ticket-card { display: flex; min-height: 480px; flex-direction: column; align-items: center; padding: clamp(1.5rem, 4vw, 2.5rem); text-align: center; }
+.ticket-card__badge-slot { min-height: 30px; margin-bottom: 0.75rem; }
+.ticket-card h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+.ticket-card__price { margin: 0.75rem 0 1.5rem; font-size: clamp(3rem, 8vw, 4.25rem); font-weight: 900; line-height: 1; }
+.feature-list { width: 100%; max-width: 390px; margin: 0 0 2rem; padding: 0; list-style: none; text-align: left; }
+.feature-list li { display: flex; gap: 0.65rem; padding: 0.45rem 0; color: var(--text-secondary); line-height: 1.45; }
+.feature-list li::before { color: var(--poke-green); content: '✓'; font-weight: 900; }
+.ticket-card .btn-official { width: min(100%, 330px); margin-top: auto; }
+.spectator-card { max-width: 520px; margin: 2rem auto 0; text-align: center; }
+
+.info-list { margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.info-list li { padding: 0.35rem 0; line-height: 1.5; }
+
+.container > section + section,
+.container > article + article,
+article > section + section {
+  margin-top: 2rem;
+}
+
+details {
+  border-bottom: 1px solid rgba(10,33,90,0.1);
+}
+
+summary {
+  padding: 0.5rem 0;
+  cursor: pointer;
+}
+
+footer a { color: rgba(255,255,255,0.82); font-weight: 600; }
+footer a:hover { color: white; }
+footer p { line-height: 1.7; }
+
+@media (max-width: 768px) {
+  header { min-height: 64px; }
+  main h1 { font-size: clamp(2.15rem, 12vw, 3.25rem) !important; }
+  .page-shell { padding: 2.5rem 0; }
+  .page-heading { margin-bottom: 2rem; }
+  .ticket-card { min-height: 0; }
+  .news-ticker-item { padding: 0 1rem; font-size: 0.9rem; }
+  .btn-official { width: 100%; max-width: 340px; }
+  footer { padding-inline: 1rem !important; }
 }

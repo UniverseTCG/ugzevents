@@ -3,10 +3,12 @@ import { useState } from 'react';
 
 export default function EventResults({
   title,
-  pillars
+  pillars,
+  buyLabel
 }: {
   title: string,
-  pillars: { id: string, label: string, color: string, title: string, img: string, link: string }[]
+  pillars: { id: string, label: string, color: string, title: string, img: string, link: string }[],
+  buyLabel: string
 }) {
   const [activePillar, setActivePillar] = useState(pillars[0].id);
 
@@ -83,7 +85,7 @@ export default function EventResults({
             <a href={activeData.link} style={{ display: 'block', width: '100%', maxWidth: '800px', overflow: 'hidden', borderRadius: 'var(--radius-md)', border: `1px solid rgba(0,0,0,0.1)`, transition: 'all 250ms var(--spring-easing)' }} className="group">
               <div style={{ width: '100%', height: 'clamp(200px, 40vw, 300px)', backgroundImage: `url('${activeData.img}')`, backgroundSize: 'cover', backgroundPosition: 'center', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', paddingBottom: 'var(--space-6)' }}>
                 <div className="btn-official" style={{ background: 'white', color: 'var(--poke-navy)', transform: 'translateY(50%)', marginBottom: '-1rem', border: '1px solid rgba(0,0,0,0.1)' }}>
-                  COMPRAR ENTRADAS AHORA
+                  {buyLabel}
                 </div>
               </div>
             </a>
